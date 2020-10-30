@@ -1,7 +1,7 @@
 ﻿TODO LIST:
 
-1. Stworzyć listę stolic państw Europejskich
-2. Losowo wybrać 1 stolicę, którą użytkownik ma zgadnąć
+DONE: 1. Stworzyć listę stolic państw Europejskich
+DONE: 2. Losowo wybrać 1 stolicę, którą użytkownik ma zgadnąć
 3. Wszystkie litery przedstawione za pomocą myślnika "-" na ekranie
 4. Wyświetlanie "Life points" - domyślnie 5
 5. Program pyta czy user chce zgadnąć litere czy całe słowo
