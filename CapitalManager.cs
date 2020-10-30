@@ -37,5 +37,15 @@ namespace The_Hangman_Game
                 }
             }
         }
+
+        public int Randomize()
+        {
+            return new Random().Next(0, _listCapitals.Count);
+        }
+
+        public Capital SelectRandomCapital()
+        {
+            return _listCapitals[Randomize()];
+        }
     }
 }
