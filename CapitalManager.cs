@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace The_Hangman_Game
 {
-    class CapitalManager
+    public class CapitalManager
     {
         private List<Capital> _listCapitals;
 
