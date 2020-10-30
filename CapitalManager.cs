@@ -9,7 +9,9 @@ namespace The_Hangman_Game
 {
     public class CapitalManager
     {
-        private List<Capital> _listCapitals;
+        public List<Capital> _listCapitals;
+        public string _textFilePath = @"..\..\DATA\countries_and_capitals.txt";
+        public Capital _currentSelected = null;
 
         public CapitalManager(string TextFilePath)
         {
