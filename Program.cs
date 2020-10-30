@@ -10,6 +10,9 @@ namespace The_Hangman_Game
     {
         static void Main(string[] args)
         {
+            CapitalManager _capitalManager = new CapitalManager();
+            var cap = _capitalManager.SelectRandomCapital();
+            Console.ReadKey();
         }
     }
 }
