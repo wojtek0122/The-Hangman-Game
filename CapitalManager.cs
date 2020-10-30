@@ -13,10 +13,10 @@ namespace The_Hangman_Game
         public string _textFilePath = @"..\..\DATA\countries_and_capitals.txt";
         public Capital _currentSelected = null;
 
-        public CapitalManager(string TextFilePath)
+        public CapitalManager()
         {
             CreateNewCapitalList();
-            LoadDataFromTextFile(TextFilePath);
+            LoadDataFromTextFile();
         }
 
         private void CreateNewCapitalList()
@@ -24,16 +24,16 @@ namespace The_Hangman_Game
             _listCapitals = new List<Capital>();
         }
 
-        private void LoadDataFromTextFile(string TextFilePath)
+        public void LoadDataFromTextFile()
         {
-            var fileStream = new FileStream(@"..\DATA\countries_and_capitals.txt", FileMode.Open, FileAccess.Read);
+            var fileStream = new FileStream(_textFilePath, FileMode.Open, FileAccess.Read);
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
             {
                 string line;
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     var _splitCharIndex = line.IndexOf('|', 0);
-                    _listCapitals.Add(new Capital { Country = line.Substring(0, _splitCharIndex - 1), City = line.Substring(_splitCharIndex + 1, line.Length) } );
+                    _listCapitals.Add(new Capital { Country = line.Substring(0, _splitCharIndex - 1), City = line.Substring(_splitCharIndex + 1, line.Length - _splitCharIndex - 1) } );
                 }
             }
         }
