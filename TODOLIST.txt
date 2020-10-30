@@ -11,8 +11,8 @@ DONE: 2. Losowo wybrać 1 stolicę, którą użytkownik ma zgadnąć
 9. Jeżeli gracz odgadnie ostatnią litere lub całe słowo wygrywa grę
 10. Jeżeli przegrana lub wygrana pytanie o ponowną rozgrywkę
 11. Na koniec wyświetl podsumowanie zawierające: liczbe użytych liter oraz czas gry
-12. Użyć plik "countries-and-capitals.txt" do utworzenia listy
-13. Parsować plik "countries-and-capitals.txt": Kraj "|" Stolica
+DONE: 12. Użyć plik "countries-and-capitals.txt" do utworzenia listy
+DONE: 13. Parsować plik "countries-and-capitals.txt": Kraj "|" Stolica
 14. Wyświetlić podpowiedź: "The capital of ..." gdy LP jest niski
 15. Niepoprawne wpisanie całego słowa skutkuje LP-2
 16. Po wygraniu poprosić o imie
