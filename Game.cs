@@ -236,7 +236,7 @@ namespace The_Hangman_Game
                 do
                 {
                     Console.Write("Choice: ");
-                    _choice = Console.ReadLine();
+                    _choice = Console.ReadLine().ToUpper();
                 } while (_choice != "1" && _choice != "2");
 
                 Console.Write("Type: ");
@@ -245,7 +245,7 @@ namespace The_Hangman_Game
                 {
                     case "1":
                         {
-                            var _letter = Console.ReadKey().KeyChar;
+                            var _letter = Console.ReadLine().ToUpper()[0];
                             if (_cap.City.Contains(_letter))
                             {
                                 _gameStats._guessedLetter.Add(_letter);
@@ -265,7 +265,7 @@ namespace The_Hangman_Game
                         }
                     case "2":
                         {
-                            _choice = Console.ReadLine();
+                            _choice = Console.ReadLine().ToUpper();
                             if (_choice == _cap.City)
                             {
                                 //WIN GAME
