@@ -45,7 +45,7 @@ namespace The_Hangman_Game
                     while ((line = streamReader.ReadLine()) != null)
                     {
                         var _splitCharIndex = line.IndexOf('|', 0);
-                        _listCapitals.Add(new Capital { Country = line.Substring(0, _splitCharIndex - 1).Trim(), City = line.Substring(_splitCharIndex + 1, line.Length - _splitCharIndex - 1).Trim() });
+                        _listCapitals.Add(new Capital { Country = line.Substring(0, _splitCharIndex - 1).TrimEnd().ToUpper(), City = line.Substring(_splitCharIndex + 1, line.Length - _splitCharIndex - 1).TrimStart().ToUpper() });
                     }
                 }
             }
