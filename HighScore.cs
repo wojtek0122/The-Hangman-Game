@@ -16,19 +16,33 @@ namespace The_Hangman_Game
         public HighScore()
         {
             _highScore = new List<HighScoreType>();
+            ClearHighScore();
+        }
+
+        public void Add(string Name, DateTime Date, int Time, int Try, string Word)
+        {
+            _highScore.Add(new HighScoreType { Name = Name, Date = Date, Time = Time, Try = Try, Word = Word });
+            SaveToFile();
+        }
+
+        private void ClearHighScore()
+        {
+            _highScore.Clear();
             LoadFromFile();
+            SortHighScoreByTime();
         }
 
         public void ShowHighScore()
         {
+            ClearHighScore();
             // name   | date             | guessing_time | guessing_tries | guessed_word
             Console.Clear();
-            Console.WriteLine("Name\t | Date\t\t | Guessing Time\t | Guessing Tries\t | Guessed Word");
+            Console.WriteLine("Name\t\t | Date\t\t\t\t | Guessing Time\t | Guessing Tries\t | Guessed Word");
             try
             {
                 foreach (var item in _highScore)
                 {
-                    Console.WriteLine(String.Format("{0}\t {1}\t\t {2}\t {3}\t {4}\t", item.Name, item.Date, item.Time, item.Try, item.Word));
+                    Console.WriteLine(String.Format("{0}\t\t {1}\t\t\t {2}\t\t {3}\t\t\t {4}", item.Name, item.Date, item.Time, item.Try, item.Word));
                 }
             }
             catch(NullReferenceException ex)
@@ -45,23 +59,37 @@ namespace The_Hangman_Game
             }
         }
 
+        private void SortHighScoreByTime()
+        {
+            List<HighScoreType> _sortedList = _highScore.OrderByDescending(o => o.Time).ToList();
+            _highScore = _sortedList;
+        }
+
         public void SaveToFile()//string Name, DateTime Date, int Time, int Try, string Word)
         {
+            SortHighScoreByTime();
             FileStream _stream = null;
+            int _count = 0;
             try
             {
-                _stream = new FileStream(_textFilePath, FileMode.OpenOrCreate);
+                _stream = new FileStream(_textFilePath, FileMode.Append);
 
                 using (StreamWriter _writer = new StreamWriter(_stream, Encoding.UTF8))
                 {
-                    foreach(var _item in _highScore)
+                    foreach (var _item in _highScore)
                     {
-                        _writer.Write(_item.Name);
-                        _writer.Write(_item.Date.ToString());
-                        _writer.Write(_item.Time.ToString());
-                        _writer.Write(_item.Try.ToString());
+                        _writer.Write(_item.Name + "|");
+                        _writer.Write(_item.Date.ToString() + "|");
+                        _writer.Write(_item.Time.ToString() + "|");
+                        _writer.Write(_item.Try.ToString() + "|");
                         _writer.Write(_item.Word);
                         _writer.Write("\n");
+                        _count++;
+
+                        if (_count == 10)
+                        {
+                            break;
+                        }
                     }
                 }
             }
@@ -90,8 +118,13 @@ namespace The_Hangman_Game
                     while ((line = streamReader.ReadLine()) != null)
                     {
                         var _split = line.Split('|');
-                        //var _date = 
-                        //_highScore.Add(new HighScoreType { Name = _split[0], Date = _split[1], Time = _split[2], Try = _split[3], Word = _split[4]});
+                        DateTime _date;
+                        DateTime.TryParse(_split[1], out _date);
+                        int _time;
+                        Int32.TryParse(_split[2], out _time);
+                        int _try;
+                        Int32.TryParse(_split[3], out _try);
+                        _highScore.Add(new HighScoreType { Name = _split[0], Date = _date, Time = _time, Try = _try, Word = _split[4]});
                     }
                 }
             }
