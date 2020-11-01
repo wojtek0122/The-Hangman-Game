@@ -236,7 +236,41 @@ namespace The_Hangman_Game
 
                 switch (_choice)
                 {
-                    break;
+                    case "1":
+                        {
+                            var _letter = Console.ReadKey().KeyChar;
+                            if (_cap.City.Contains(_letter))
+                            {
+                                _gameStats._guessedLetter.Add(_letter);
+                                if(_gameStats._guessedLetter.Count == _cap.City.Length)
+                                {
+                                    //WIN GAME
+                                    RestartGame();
+                                }
+                            }
+                            else
+                            {
+                                _gameStats._notInWordLetter.Add(_letter);
+                                _gameStats.LifePoint--;
+                            }
+                            _gameStats.TryCount++;
+                            break;
+                        }
+                    case "2":
+                        {
+                            _choice = Console.ReadLine();
+                            if (_choice == _cap.City)
+                            {
+                                //WIN GAME
+                                RestartGame();
+                            }
+                            else 
+                            {
+                                _gameStats.LifePoint -= 2;
+                            }
+                            _gameStats.TryCount++;
+                            break;
+                        }
                 }
             }
         }
