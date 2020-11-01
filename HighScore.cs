@@ -61,7 +61,7 @@ namespace The_Hangman_Game
 
         private void SortHighScoreByTime()
         {
-            List<HighScoreType> _sortedList = _highScore.OrderByDescending(o => o.Time).ToList();
+            List<HighScoreType> _sortedList = _highScore.OrderBy(o => o.Time).ToList();
             _highScore = _sortedList;
         }
 
