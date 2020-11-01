@@ -8,5 +8,13 @@ namespace The_Hangman_Game
 {
     class HighScore
     {
+
+        public List<>
+        // name| date | guessing_time | guessing_tries | guessed_word
+
+        void ShowHighScore()
+        {
+
+        }
     }
 }
