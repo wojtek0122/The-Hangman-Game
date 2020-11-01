@@ -36,16 +36,36 @@ namespace The_Hangman_Game
         /// </summary>
         public void LoadDataFromTextFile()
         {
-            var fileStream = new FileStream(_textFilePath, FileMode.Open, FileAccess.Read);
-            using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
+            try
             {
-                string line;
-                while ((line = streamReader.ReadLine()) != null)
+                var fileStream = new FileStream(_textFilePath, FileMode.Open, FileAccess.Read);
+                using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
                 {
-                    var _splitCharIndex = line.IndexOf('|', 0);
-                    _listCapitals.Add(new Capital { Country = line.Substring(0, _splitCharIndex - 1), City = line.Substring(_splitCharIndex + 1, line.Length - _splitCharIndex - 1) } );
+                    string line;
+                    while ((line = streamReader.ReadLine()) != null)
+                    {
+                        var _splitCharIndex = line.IndexOf('|', 0);
+                        _listCapitals.Add(new Capital { Country = line.Substring(0, _splitCharIndex - 1), City = line.Substring(_splitCharIndex + 1, line.Length - _splitCharIndex - 1) });
+                    }
                 }
             }
+            catch (DirectoryNotFoundException ex)
+            {
+                Console.WriteLine("Nie znaleziono katalogu - " + ex.Message);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("Nie znaleziono pliku - " + ex.Message);
+            }
+            catch (FileLoadException ex)
+            {
+                Console.WriteLine("Plik  jest uszkodzony - " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Coś poszło nie tak przy wczytywaniu pliku - " + ex.Message);
+            }
+            
         }
 
         /// <summary>
@@ -63,7 +83,27 @@ namespace The_Hangman_Game
         /// <returns>Capital object</returns>
         public Capital SelectRandomCapital()
         {
-            return _listCapitals[Randomize()];
+            try
+            {
+                return _listCapitals[Randomize()];
+            }
+            catch(ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine("Indeks poza zakresem - " + ex.Message);
+            }
+            catch(IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("Indeks listy poza zakresem - " + ex.Message);
+            }
+            catch(ArgumentNullException ex)
+            {
+                Console.WriteLine("Lista nie została zainicjowana - " + ex.Message);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Coś poszło nie tak - " + ex.Message);
+            }
+            return null;
         }
     }
 }
