@@ -8,8 +8,10 @@ namespace The_Hangman_Game
 {
     class Game
     {
+        HighScore _highScore;
         public Game()
         {
+            _highScore = new HighScore();
             Run();
         }
 
@@ -27,7 +29,7 @@ namespace The_Hangman_Game
                         }
                     case '2':
                         {
-                            //HighScore();
+                            _highScore.ShowHighScore();
                             break;
                         }
                     default:
