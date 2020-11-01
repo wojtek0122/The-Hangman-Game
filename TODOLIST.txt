@@ -2,21 +2,21 @@
 
 DONE: 1. Stworzyć listę stolic państw Europejskich
 DONE: 2. Losowo wybrać 1 stolicę, którą użytkownik ma zgadnąć
-3. Wszystkie litery przedstawione za pomocą myślnika "-" na ekranie
+DONE: 3. Wszystkie litery przedstawione za pomocą myślnika "-" na ekranie
 DONE: 4. Wyświetlanie "Life points" - domyślnie 5
-5. Program pyta czy user chce zgadnąć litere czy całe słowo
-6. Jeżeli litera lub słowo są nieprawidłowe odejmowany jest "Life point"
-7. Jeżeli "Life point" równe 0 wtedy koniec gry
-8. Jeżeli LP>0 i litera nie zawiera się w słowie haśle, należy dodać i wyświetlić ją na liście "not-in-word"
-9. Jeżeli gracz odgadnie ostatnią litere lub całe słowo wygrywa grę
-10. Jeżeli przegrana lub wygrana pytanie o ponowną rozgrywkę
+DONE: 5. Program pyta czy user chce zgadnąć litere czy całe słowo
+DONE: 6. Jeżeli litera lub słowo są nieprawidłowe odejmowany jest "Life point"
+DONE: 7. Jeżeli "Life point" równe 0 wtedy koniec gry
+DONE: 8. Jeżeli LP>0 i litera nie zawiera się w słowie haśle, należy dodać i wyświetlić ją na liście "not-in-word"
+DONE: 9. Jeżeli gracz odgadnie ostatnią litere lub całe słowo wygrywa grę
+DONE: 10. Jeżeli przegrana lub wygrana pytanie o ponowną rozgrywkę
 11. Na koniec wyświetl podsumowanie zawierające: liczbe użytych liter oraz czas gry
 DONE: 12. Użyć plik "countries-and-capitals.txt" do utworzenia listy
 DONE: 13. Parsować plik "countries-and-capitals.txt": Kraj "|" Stolica
 DONE: 14. Wyświetlić podpowiedź: "The capital of ..." gdy LP jest niski
-15. Niepoprawne wpisanie całego słowa skutkuje LP-2
+DONE: 15. Niepoprawne wpisanie całego słowa skutkuje LP-2
 16. Po wygraniu poprosić o imie
 17. Zapisać do pliku format: name | date | guessing_time | guessing_tries | guessed_word (ex. Marcin | 26.10.2016 14:15 | 45 | Warsaw)
 18. High score - zapisuje tylko 10 najlepszych wyników i wyświetla po grze
-19. Dodać ASCII art wisielca
+DONE: 19. Dodać ASCII art wisielca
 20. ZAGRAĆ!
