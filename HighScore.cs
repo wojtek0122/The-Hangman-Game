@@ -67,6 +67,7 @@ namespace The_Hangman_Game
 
         public void SaveToFile()//string Name, DateTime Date, int Time, int Try, string Word)
         {
+            ClearHighScore();
             SortHighScoreByTime();
             FileStream _stream = null;
             int _count = 0;
