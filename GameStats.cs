@@ -11,6 +11,9 @@ namespace The_Hangman_Game
         private DateTime _startGameTime;
         private DateTime _endGameTime;
 
+        public List<char> _guessedLetter;
+        public List<char> _notInWordLetter;
+
         public GameStats() : this(StartLifePoint: 5)
         {
 
@@ -20,9 +23,17 @@ namespace The_Hangman_Game
         {
             LifePoint = StartLifePoint;
             _startGameTime = DateTime.Now;
+            _guessedLetter = new List<char>();
+            _notInWordLetter = new List<char>();
+            TryCount = 0;
         }
 
         public int LifePoint
+        {
+            get; set;
+        }
+
+        public int TryCount
         {
             get; set;
         }
