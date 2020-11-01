@@ -48,6 +48,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameStats.cs" />
     <Compile Include="HighScore.cs" />
+    <Compile Include="HighScoreType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

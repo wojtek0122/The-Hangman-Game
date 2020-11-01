@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,106 @@ namespace The_Hangman_Game
     {
 
         public List<HighScoreType> _highScore;
-        
-        void ShowHighScore()
-        {
+        public string _textFilePath = @"..\..\DATA\highscore.txt";
 
+        public HighScore()
+        {
+            _highScore = new List<HighScoreType>();
+            LoadFromFile();
+        }
+
+        public void ShowHighScore()
+        {
+            // name   | date             | guessing_time | guessing_tries | guessed_word
+            Console.Clear();
+            Console.WriteLine("Name\t | Date\t\t | Guessing Time\t | Guessing Tries\t | Guessed Word");
+            try
+            {
+                foreach (var item in _highScore)
+                {
+                    Console.WriteLine(String.Format("{0}\t {1}\t\t {2}\t {3}\t {4}\t", item.Name, item.Date, item.Time, item.Try, item.Word));
+                }
+            }
+            catch(NullReferenceException ex)
+            {
+                Console.WriteLine("Null reference - " + ex.Message);
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("Index out of range - " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Something went wrong - " + ex.Message);
+            }
+        }
+
+        public void SaveToFile()//string Name, DateTime Date, int Time, int Try, string Word)
+        {
+            FileStream _stream = null;
+            try
+            {
+                _stream = new FileStream(_textFilePath, FileMode.OpenOrCreate);
+
+                using (StreamWriter _writer = new StreamWriter(_stream, Encoding.UTF8))
+                {
+                    foreach(var _item in _highScore)
+                    {
+                        _writer.Write(_item.Name);
+                        _writer.Write(_item.Date.ToString());
+                        _writer.Write(_item.Time.ToString());
+                        _writer.Write(_item.Try.ToString());
+                        _writer.Write(_item.Word);
+                        _writer.Write("\n");
+                    }
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine("Argument null exception - " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Something were wrong - " + ex.Message);
+            }
+            finally
+            {
+                _stream.Dispose();
+            }
+        }
+
+        public void LoadFromFile()
+        {
+            try
+            {
+                var fileStream = new FileStream(_textFilePath, FileMode.Open, FileAccess.Read);
+                using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
+                {
+                    string line;
+                    while ((line = streamReader.ReadLine()) != null)
+                    {
+                        var _split = line.Split('|');
+                        //var _date = 
+                        //_highScore.Add(new HighScoreType { Name = _split[0], Date = _split[1], Time = _split[2], Try = _split[3], Word = _split[4]});
+                    }
+                }
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                Console.WriteLine("Directory not found - " + ex.Message);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("File not found - " + ex.Message);
+            }
+            catch (FileLoadException ex)
+            {
+                Console.WriteLine("File is corrupted - " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Something were wrong - " + ex.Message);
+            }
         }
     }
 }
