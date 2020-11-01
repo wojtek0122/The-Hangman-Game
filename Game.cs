@@ -157,6 +157,8 @@ namespace The_Hangman_Game
 
         private void RestartGame()
         {
+            Console.Clear();
+            _highScore.ShowHighScore();
             Console.WriteLine("\nPlay again [y]es or [n]o ?");
             var _letter = 'y';
             do
@@ -225,6 +227,7 @@ namespace The_Hangman_Game
                 {
                     //loose game
                     Console.WriteLine("\nYOU ARE LOOSER!");
+                    Console.ReadKey();
                     RestartGame();
                 }
 
