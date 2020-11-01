@@ -8,7 +8,9 @@ namespace The_Hangman_Game
 {
     class Game
     {
-        HighScore _highScore;
+        public HighScore _highScore;
+        public string _name;
+
         public Game()
         {
             _highScore = new HighScore();
