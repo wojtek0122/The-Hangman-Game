@@ -249,8 +249,7 @@ namespace The_Hangman_Game
                                 if(_gameStats._guessedLetter.Count == _cap.City.Length)
                                 {
                                     //WIN GAME
-                                    Console.WriteLine(String.Format("You guessed the capital after {0} letters. It took you {1} seconds.", _gameStats.TryCount,_gameStats.GetGameTime().ToString()));
-                                    RestartGame();
+                                    WinGame(_gameStats);
                                 }
                             }
                             else
@@ -267,8 +266,7 @@ namespace The_Hangman_Game
                             if (_choice == _cap.City)
                             {
                                 //WIN GAME
-                                Console.WriteLine(String.Format("You guessed the capital after {0} letters. It took you {1} seconds.", _gameStats.TryCount, _gameStats.GetGameTime().ToString()));
-                                RestartGame();
+                                WinGame(_gameStats);
                             }
                             else 
                             {
@@ -279,6 +277,14 @@ namespace The_Hangman_Game
                         }
                 }
             }
+        }
+
+        private void WinGame(GameStats _gameStats)
+        {
+            Console.WriteLine(String.Format("You guessed the capital after {0} letters. It took you {1} seconds.", _gameStats.TryCount, _gameStats.GetGameTime().ToString()));
+            Console.Write("Please type your name: ");
+            _name = Console.ReadLine();
+            RestartGame();
         }
     }
 }

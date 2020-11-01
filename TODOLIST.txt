@@ -15,7 +15,7 @@ DONE: 12. Użyć plik "countries-and-capitals.txt" do utworzenia listy
 DONE: 13. Parsować plik "countries-and-capitals.txt": Kraj "|" Stolica
 DONE: 14. Wyświetlić podpowiedź: "The capital of ..." gdy LP jest niski
 DONE: 15. Niepoprawne wpisanie całego słowa skutkuje LP-2
-16. Po wygraniu poprosić o imie
+DONE: 16. Po wygraniu poprosić o imie
 17. Zapisać do pliku format: name | date | guessing_time | guessing_tries | guessed_word (ex. Marcin | 26.10.2016 14:15 | 45 | Warsaw)
 18. High score - zapisuje tylko 10 najlepszych wyników i wyświetla po grze
 DONE: 19. Dodać ASCII art wisielca
