@@ -151,6 +151,30 @@ namespace The_Hangman_Game
             Console.WriteLine("3. Quit");
         }
 
+        private void RestartGame()
+        {
+            Console.WriteLine("\nPlay again [y]es or [n]o ?");
+            var _letter = 'y';
+            do
+            {
+                Console.Write("Choice: ");
+                _letter = Console.ReadKey().KeyChar;
+                switch (_letter)
+                {
+                    case 'y':
+                        {
+                            Play();
+                            break;
+                        }
+                    case 'n':
+                        {
+                            Environment.Exit(1);
+                            break;
+                        }
+                }
+            } while (_letter != 'y' && _letter != 'n');
+        }
+
         private void Play()
         {
             CapitalManager _capitalManager = new CapitalManager();
