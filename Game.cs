@@ -183,45 +183,58 @@ namespace The_Hangman_Game
             GameStats _gameStats = new GameStats();
             var _choice = "!";
 
-            while(_gameStats.LifePoint>=0)
+            while (_gameStats.LifePoint >= 0)
             {
 
                 Console.Clear();
-                Console.WriteLine("Life point(s): " + _gameStats.LifePoint + "\n\n\n");
+                Console.WriteLine("Life point(s): " + _gameStats.LifePoint + "\t\tTry count:" + _gameStats.TryCount + "\n\n\n");
 
                 DrawHangman(_gameStats.LifePoint);
 
                 Console.Write("\t");
-                foreach(var item in _cap.City)
+                foreach (var item in _cap.City)
                 {
-                    Console.Write("_ ");
+                    if(_gameStats._guessedLetter.Contains(item))
+                    {
+                        Console.Write(item + " ");
+                    }
+                    else
+                    {
+                        Console.Write("_ ");
+                    }
+                }
+                Console.WriteLine("\n");
+
+                Console.WriteLine("Not in word letters: ");
+                foreach(var item in _gameStats._notInWordLetter)
+                {
+                    Console.Write(item + " ");
                 }
                 Console.WriteLine();
 
-                if(_gameStats.LifePoint<2)
+                if (_gameStats.LifePoint < 2)
                 {
                     Console.WriteLine("\nThe capital of " + _cap.Country);
                 }
 
                 if (_gameStats.LifePoint == 0)
                 {
-                    Console.WriteLine("\nYOU ARE LOOSER!");
                     //loose game
-                    break;
+                    Console.WriteLine("\nYOU ARE LOOSER!");
+                    RestartGame();
                 }
 
-                Console.WriteLine("\nGuess letter [1] or word [2]?");
-                while(_choice != "1" || _choice != "2")
+                Console.WriteLine("\nGuess [1]letter or [2]word?");
+
+                do
                 {
                     Console.Write("Choice: ");
                     _choice = Console.ReadLine();
-                }
+                } while (_choice != "1" && _choice != "2");
 
-                Console.WriteLine("\nType letter or '!' to quit the game");
+                Console.Write("Type: ");
 
-                //Exit - type '!'
-                _choice = Console.ReadLine();
-                if(_choice == "!")
+                switch (_choice)
                 {
                     break;
                 }
