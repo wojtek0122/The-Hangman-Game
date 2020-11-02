@@ -31,6 +31,10 @@ namespace The_Hangman_Game
                         }
                     case '2':
                         {
+                            if(_highScore._highScore.Count == 0)
+                            {
+                                _highScore.LoadFromFile();
+                            }
                             _highScore.ShowHighScore();
                             break;
                         }
@@ -158,6 +162,10 @@ namespace The_Hangman_Game
         private void RestartGame()
         {
             Console.Clear();
+            if (_highScore._highScore.Count == 0)
+            {
+                _highScore.LoadFromFile();
+            }
             _highScore.ShowHighScore();
             Console.WriteLine("\nPlay again [y]es or [n]o ?");
             var _letter = 'y';
@@ -245,7 +253,15 @@ namespace The_Hangman_Game
                 {
                     case "1":
                         {
-                            var _letter = Console.ReadLine().ToUpper()[0];
+                            var _letter = '1';
+                            try
+                            {
+                                _letter = Console.ReadLine().ToUpper()[0];
+                            }
+                            catch(Exception ex)
+                            {
+                                Console.WriteLine("Something went wrong - " + ex.Message);
+                            }
                             if (_cap.City.Contains(_letter))
                             {
                                 _gameStats._guessedLetter.Add(_letter);
@@ -287,7 +303,7 @@ namespace The_Hangman_Game
             Console.WriteLine(String.Format("You guessed the capital after {0} letters. It took you {1} seconds.", _gameStats.TryCount, _gameStats.GetGameTime().ToString()));
             Console.Write("Please type your name: ");
             _name = Console.ReadLine();
-            _highScore.Add(_name, DateTime.Now, _gameStats.GetGameTime(), _gameStats.TryCount, City);
+            _highScore.AddToHighScore(_name, DateTime.Now, _gameStats.GetGameTime(), _gameStats.TryCount, City);
             RestartGame();
         }
     }

@@ -18,23 +18,18 @@ namespace The_Hangman_Game
             _highScore = new List<HighScoreType>();
         }
 
-        public void Add(string Name, DateTime Date, int Time, int Try, string Word)
-        {
-            _highScore.Add(new HighScoreType { Name = Name, Date = Date, Time = Time, Try = Try, Word = Word });
-            SaveToFile();
-        }
-
-        private void ClearHighScore()
+        public void AddToHighScore(string Name, DateTime Date, int Time, int Try, string Word)
         {
             _highScore.Clear();
             LoadFromFile();
-            SortHighScoreByTime();
+            _highScore.Add(new HighScoreType { Name = Name, Date = Date, Time = Time, Try = Try, Word = Word });
+            SaveToFile();
         }
 
         public void ShowHighScore()
         {
             int count = 0;
-            ClearHighScore();
+            SortHighScoreByTime();
             // name   | date             | guessing_time | guessing_tries | guessed_word
             Console.Clear();
             Console.WriteLine("Name\t\t | Date\t\t\t\t | Guessing Time\t | Guessing Tries\t | Guessed Word");
@@ -76,7 +71,7 @@ namespace The_Hangman_Game
             int _count = 0;
             try
             {
-                _stream = new FileStream(_textFilePath, FileMode.Append);
+                _stream = new FileStream(_textFilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
 
                 using (StreamWriter _writer = new StreamWriter(_stream, Encoding.UTF8))
                 {
@@ -108,6 +103,8 @@ namespace The_Hangman_Game
             {
                 _stream.Dispose();
             }
+
+            _highScore.Clear();
         }
 
         public void LoadFromFile()
