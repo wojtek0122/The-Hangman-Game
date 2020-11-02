@@ -16,7 +16,6 @@ namespace The_Hangman_Game
         public HighScore()
         {
             _highScore = new List<HighScoreType>();
-            ClearHighScore();
         }
 
         public void Add(string Name, DateTime Date, int Time, int Try, string Word)
@@ -34,6 +33,7 @@ namespace The_Hangman_Game
 
         public void ShowHighScore()
         {
+            int count = 0;
             ClearHighScore();
             // name   | date             | guessing_time | guessing_tries | guessed_word
             Console.Clear();
@@ -43,6 +43,10 @@ namespace The_Hangman_Game
                 foreach (var item in _highScore)
                 {
                     Console.WriteLine(String.Format("{0}\t\t {1}\t\t\t {2}\t\t {3}\t\t\t {4}", item.Name, item.Date, item.Time, item.Try, item.Word));
+                    if (count++ == 9)
+                    {
+                        break;
+                    }
                 }
             }
             catch(NullReferenceException ex)
@@ -67,7 +71,6 @@ namespace The_Hangman_Game
 
         public void SaveToFile()//string Name, DateTime Date, int Time, int Try, string Word)
         {
-            ClearHighScore();
             SortHighScoreByTime();
             FileStream _stream = null;
             int _count = 0;
@@ -85,9 +88,8 @@ namespace The_Hangman_Game
                         _writer.Write(_item.Try.ToString() + "|");
                         _writer.Write(_item.Word);
                         _writer.Write("\n");
-                        _count++;
 
-                        if (_count == 10)
+                        if (_count++ == 9)
                         {
                             break;
                         }
