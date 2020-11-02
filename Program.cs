@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace The_Hangman_Game
+﻿namespace The_Hangman_Game
 {
     class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Main function create new object of Game
+        /// </summary>
+        static void Main()
         {
             Game _game = new Game();
         }

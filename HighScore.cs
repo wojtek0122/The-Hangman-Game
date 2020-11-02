@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace The_Hangman_Game
 {
@@ -18,6 +17,14 @@ namespace The_Hangman_Game
             _highScore = new List<HighScoreType>();
         }
 
+        /// <summary>
+        /// Function to add new row in highscore
+        /// </summary>
+        /// <param name="Name">Name of player as string</param>
+        /// <param name="Date">Date when win game as DateTime</param>
+        /// <param name="Time">Duration of game as int</param>
+        /// <param name="Try">Count of try as int</param>
+        /// <param name="Word">Capital for guess as string</param>
         public void AddToHighScore(string Name, DateTime Date, int Time, int Try, string Word)
         {
             _highScore.Clear();
@@ -26,6 +33,9 @@ namespace The_Hangman_Game
             SaveToFile();
         }
 
+        /// <summary>
+        /// Shows highscore sorted by time - shows only top 10 records
+        /// </summary>
         public void ShowHighScore()
         {
             int count = 0;
@@ -58,12 +68,18 @@ namespace The_Hangman_Game
             }
         }
 
+        /// <summary>
+        /// Sorted by Time functions 
+        /// </summary>
         private void SortHighScoreByTime()
         {
             List<HighScoreType> _sortedList = _highScore.OrderBy(o => o.Time).ToList();
             _highScore = _sortedList;
         }
 
+        /// <summary>
+        /// Save highscore to file highscore.txt
+        /// </summary>
         public void SaveToFile()//string Name, DateTime Date, int Time, int Try, string Word)
         {
             SortHighScoreByTime();
@@ -107,6 +123,9 @@ namespace The_Hangman_Game
             _highScore.Clear();
         }
 
+        /// <summary>
+        /// Read highscore from file highscore.txt
+        /// </summary>
         public void LoadFromFile()
         {
             try

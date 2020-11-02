@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace The_Hangman_Game
 {
@@ -38,6 +35,10 @@ namespace The_Hangman_Game
             get; set;
         }
 
+        /// <summary>
+        /// Return duration game time
+        /// </summary>
+        /// <returns></returns>
         public int GetGameTime()
         {
             _endGameTime = DateTime.Now;

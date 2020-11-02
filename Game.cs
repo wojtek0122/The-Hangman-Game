@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace The_Hangman_Game
 {
@@ -11,6 +8,9 @@ namespace The_Hangman_Game
         public HighScore _highScore;
         public string _name;
 
+        /// <summary>
+        /// Main game function with main loop
+        /// </summary>
         public Game()
         {
             _highScore = new HighScore();
@@ -48,6 +48,9 @@ namespace The_Hangman_Game
             }
         }
 
+        /// <summary>
+        /// Function draws main menu
+        /// </summary>
         private void MainMenu()
         {
             Console.Clear();
@@ -57,6 +60,9 @@ namespace The_Hangman_Game
             Console.Write("Your choice: ");
         }
 
+        /// <summary>
+        /// Function draws header of game
+        /// </summary>
         private void Header()
         {
             string _header = "The Hangman Game - Motorola Academy";
@@ -64,6 +70,10 @@ namespace The_Hangman_Game
             Console.WriteLine(_header + "\n");
         }
 
+        /// <summary>
+        /// Function draws Hangman depended of actual life point
+        /// </summary>
+        /// <param name="HangmanStep">Depended on of current life points draw hangman. Start from 5 to 0.</param>
         private void DrawHangman(int HangmanStep)
         {
             switch(HangmanStep)
@@ -151,6 +161,9 @@ namespace The_Hangman_Game
             
         }
 
+        /// <summary>
+        /// Draw menu choice texts
+        /// </summary>
         private void MenuList()
         {
             Console.WriteLine("Main menu: ");
@@ -159,6 +172,9 @@ namespace The_Hangman_Game
             Console.WriteLine("3. Quit");
         }
 
+        /// <summary>
+        /// Restart game function - asking about playing again
+        /// </summary>
         private void RestartGame()
         {
             Console.Clear();
@@ -189,6 +205,9 @@ namespace The_Hangman_Game
             } while (_letter != 'y' && _letter != 'n');
         }
 
+        /// <summary>
+        /// Main loop of game
+        /// </summary>
         private void Play()
         {
             CapitalManager _capitalManager = new CapitalManager();
@@ -298,6 +317,11 @@ namespace The_Hangman_Game
             }
         }
 
+        /// <summary>
+        /// RUn if win game, adding to highscore
+        /// </summary>
+        /// <param name="_gameStats">Current game statistics</param>
+        /// <param name="City">City to guessing</param>
         private void WinGame(GameStats _gameStats, string City)
         {
             Console.WriteLine(String.Format("You guessed the capital after {0} letters. It took you {1} seconds.", _gameStats.TryCount, _gameStats.GetGameTime().ToString()));

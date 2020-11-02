@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace The_Hangman_Game
 {
@@ -51,15 +49,15 @@ namespace The_Hangman_Game
             }
             catch (DirectoryNotFoundException ex)
             {
-                Console.WriteLine("Nie znaleziono katalogu - " + ex.Message);
+                Console.WriteLine("Directory not found - " + ex.Message);
             }
             catch (FileNotFoundException ex)
             {
-                Console.WriteLine("Nie znaleziono pliku - " + ex.Message);
+                Console.WriteLine("File not found - " + ex.Message);
             }
             catch (FileLoadException ex)
             {
-                Console.WriteLine("Plik  jest uszkodzony - " + ex.Message);
+                Console.WriteLine("File is corrupted - " + ex.Message);
             }
             catch (Exception ex)
             {
@@ -89,19 +87,19 @@ namespace The_Hangman_Game
             }
             catch(ArgumentOutOfRangeException ex)
             {
-                Console.WriteLine("Indeks poza zakresem - " + ex.Message);
+                Console.WriteLine("Argument out of range - " + ex.Message);
             }
             catch(IndexOutOfRangeException ex)
             {
-                Console.WriteLine("Indeks listy poza zakresem - " + ex.Message);
+                Console.WriteLine("Index out of range - " + ex.Message);
             }
             catch(ArgumentNullException ex)
             {
-                Console.WriteLine("Lista nie została zainicjowana - " + ex.Message);
+                Console.WriteLine("List not initialized - " + ex.Message);
             }
             catch(Exception ex)
             {
-                Console.WriteLine("Coś poszło nie tak - " + ex.Message);
+                Console.WriteLine("Something were wrong - " + ex.Message);
             }
             return null;
         }
